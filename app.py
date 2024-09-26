@@ -25,3 +25,15 @@ class Birds(Resource):
         return make_response(jsonify(birds), 200)
 
 api.add_resource(Birds, '/birds')
+
+class BirdByID(Resource):
+    def get(self, id):
+        bird = Bird.query.filter(Bird.id == id).first()
+
+        response = make_response(
+            jsonify(bird), 200
+        )
+
+        return response
+    
+api.add_resource(BirdByID, '/birds/<int:id>')

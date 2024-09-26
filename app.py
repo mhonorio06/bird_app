@@ -30,8 +30,10 @@ class BirdByID(Resource):
     def get(self, id):
         bird = Bird.query.filter(Bird.id == id).first()
 
+        bird_dict = bird.to_dict()
+
         response = make_response(
-            jsonify(bird), 200
+            jsonify(bird_dict), 200
         )
 
         return response

@@ -13,6 +13,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
+db = SQLAlchemy(app)
+
 migrate = Migrate(app, db)
 db.init_app(app)
 
@@ -25,4 +27,6 @@ class Birds(Resource):
         return make_response(jsonify(birds), 200)
 
 api.add_resource(Birds, '/birds')
-    
+
+if __name__=='__main__':
+    app.run(debug=True)

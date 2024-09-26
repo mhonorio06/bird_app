@@ -1,7 +1,10 @@
+# seed.py
+
 from app import app
 from models import db, Bird
 
 with app.app_context():
+
     print('Deleting existing birds...')
     Bird.query.delete()
 
@@ -11,10 +14,10 @@ with app.app_context():
     starling = Bird(name='Common Starling', species='Sturnus Vulgaris')
     dove = Bird(name='Mourning Dove', species='Zenaida Macroura')
 
-    print('Adding bird objects to transaction')
+    print('Adding bird objects to transaction...')
     db.session.add_all([chickadee, grackle, starling, dove])
 
-    print('Commiting transaction...')
+    print('Committing transaction...')
     db.session.commit()
 
     print('Complete.')

@@ -39,3 +39,7 @@ class BirdByID(Resource):
         return response
     
 api.add_resource(BirdByID, '/birds/<int:id>')
+
+# PGPASSWORD=RDRuwCl8dI7Nok7VkK156vMEXCo8HPdl pg_dump -h dpg-crpuhrd6l47c73aq8du0-a.oregon-postgres.render.com -U mhonorio06 --format=custom --no-acl --no-owner bird_app_cque > bird_app_cque.sql
+
+# PGPASSWORD=mOONbYfUxm4rV6lPppdykgzqsWYCs72C pg_restore -h dpg-crr2av88fa8c739fsfm0-a.oregon-postgres.render.com -U mhonorio06 --verbose --clean --no-acl --no-owner -d bird_app_cque bird_app_cque.sql
